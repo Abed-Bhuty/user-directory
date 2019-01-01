@@ -7,5 +7,6 @@ const handleSubmit = function (ev) {
   const users = document.querySelector('#users')
   users.innerHTML += '<p>' + userName + ', ' + age + '</p>'
   form.reset()
+  form.userName.focus()
 }
 form.addEventListener('submit', handleSubmit)
