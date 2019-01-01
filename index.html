@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>User Directory</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
 
-  <body>
-    <h1>User Directory</h1>
-    <form id="userForm">
-      <label for="userName">Name</label>
-      <p><input type="text" name="userName" /></p>
-      <button type="submit">Go</button> <button type="reset">Clear</button>
-    </form>
-    <script src="index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>User Directory</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+  <h1>User Directory</h1>
+  <form id="userForm">
+    <label for="userName">Name</label>
+    <p><input type="text" name="userName" autofocus></p>
+    <button type="submit">Go</button> <button type="reset">Clear</button>
+  </form>
+
+  <div id="users">
+    <br>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
 </html>
