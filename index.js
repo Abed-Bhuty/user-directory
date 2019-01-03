@@ -1,17 +1,30 @@
 const form = document.querySelector("form#userForm");
-const handleSubmit = function(ev) {
+const handleSubmit = function (ev) {
   ev.preventDefault();
   const form = ev.target;
+
   const userName = form.userName.value;
   const age = form.age.value;
   const favoritecolor = form.favoritecolor.value;
-  const users = document.querySelector("#users");
-  const p = document.createElement("p");
-  p.textContent =
-    "My Name is " +
-    `${userName}, I'm ${age} years old, my favorite color is ${favoritecolor}`;
-  p.style.backgroundColor = favoritecolor;
-  users.appendChild(p);
+
+  const users = document.querySelector('#users')
+
+
+  const list = document.createElement('ul')
+  const nameItem = document.createElement('li')
+  nameItem.textContent = `Name: ${userName}`
+  const ageItem = document.createElement('li')
+  ageItem.textContent = `Age: ${age}`
+  const colorItem = document.createElement('li')
+  colorItem.textContent = `color: ${favoritecolor}`
+
+
+  list.appendChild(nameItem);
+  list.appendChild(ageItem)
+  list.appendChild(colorItem)
+  colorItem.style.backgroundColor = favoritecolor;
+  users.appendChild(list)
+
   form.reset();
   form.userName.focus();
 };
