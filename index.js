@@ -8,6 +8,13 @@ function renderColor(color) {
   return colorDiv;
 }
 
+function renderListItem(labal, value) {
+
+  const item = document.createElement("li");
+  item.textContent = `${labal}: ${value}`
+  return item
+}
+
 const handleSubmit = function (ev) {
   ev.preventDefault();
   const form = ev.target;
@@ -19,8 +26,6 @@ const handleSubmit = function (ev) {
   const users = document.querySelector("#users");
 
   const list = document.createElement("ul");
-  const nameItem = document.createElement("li");
-  nameItem.textContent = `Name: ${userName}`;
   const ageItem = document.createElement("li");
   ageItem.textContent = `Age: ${age}`;
   const colorItem = document.createElement("li");
@@ -28,8 +33,8 @@ const handleSubmit = function (ev) {
 
   colorItem.appendChild(renderColor(favoritecolor));
 
-  list.appendChild(nameItem);
-  list.appendChild(ageItem);
+  list.appendChild(renderListItem('name', userName));
+  list.appendChild(renderListItem('Age', age));
   list.appendChild(colorItem);
   users.appendChild(list);
 
