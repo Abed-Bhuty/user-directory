@@ -11,7 +11,12 @@ function renderColor(color) {
 function renderListItem(labal, value) {
 
   const item = document.createElement("li");
-  item.textContent = `${labal}: ${value}`
+  item.textContent = `${labal}: `
+  try {
+    item.appendChild(value)
+  } catch (e) {
+    item.textContent += value
+  }
   return item
 }
 
@@ -21,21 +26,16 @@ const handleSubmit = function (ev) {
 
   const userName = form.userName.value;
   const age = form.age.value;
-  const favoritecolor = form.favoritecolor.value;
+  const favoritecolor = renderColor(form.favoritecolor.value);
 
   const users = document.querySelector("#users");
 
   const list = document.createElement("ul");
-  const ageItem = document.createElement("li");
-  ageItem.textContent = `Age: ${age}`;
-  const colorItem = document.createElement("li");
-  colorItem.textContent = `Favorite Color: `;
-
-  colorItem.appendChild(renderColor(favoritecolor));
 
   list.appendChild(renderListItem('name', userName));
   list.appendChild(renderListItem('Age', age));
-  list.appendChild(colorItem);
+  list.appendChild(renderListItem('Favorite Color', favoritecolor));
+
   users.appendChild(list);
 
   form.reset();
