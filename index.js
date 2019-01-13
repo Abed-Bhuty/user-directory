@@ -9,32 +9,32 @@ function renderColor(color) {
 }
 
 function renderListItem(labal, value) {
-
   const item = document.createElement("li");
-  item.textContent = `${labal}: `
+  item.textContent = `${labal}:`;
   try {
-    item.appendChild(value)
+    item.appendChild(value);
   } catch (e) {
-    item.textContent += value
+    item.textContent += value;
   }
-  return item
+  return item;
 }
 
 const handleSubmit = function (ev) {
   ev.preventDefault();
   const form = ev.target;
-
-  const userName = form.userName.value;
-  const age = form.age.value;
-  const favoritecolor = renderColor(form.favoritecolor.value);
-
-  const users = document.querySelector("#users");
-
+  const user = {
+    'Name': form.userName.value,
+    'Age': form.age.value,
+    'Favorite Color': renderColor(form.favoritecolor.value)
+  };
   const list = document.createElement("ul");
 
-  list.appendChild(renderListItem('name', userName));
-  list.appendChild(renderListItem('Age', age));
-  list.appendChild(renderListItem('Favorite Color', favoritecolor));
+  Object.keys(user).map(function (labal) {
+    const item = renderListItem(labal, user[labal]);
+    list.appendChild(item);
+
+  });
+  const users = document.querySelector('#users');
 
   users.appendChild(list);
 
