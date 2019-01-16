@@ -8,15 +8,15 @@ function renderColor(color) {
   return colorDiv;
 }
 
-function renderListItem(labal, value) {
-  const item = document.createElement("li");
-  item.textContent = `${labal}:`;
+function renderListList(labal, value) {
+  const List = document.createElement("li");
+  List.textContent = `${labal}:`;
   try {
-    item.appendChild(value);
+    List.appendChild(value);
   } catch (e) {
-    item.textContent += value;
+    List.textContent += value;
   }
-  return item;
+  return List;
 }
 
 const handleSubmit = function (ev) {
@@ -30,8 +30,8 @@ const handleSubmit = function (ev) {
   const list = document.createElement("ul");
 
   Object.keys(user).map(function (labal) {
-    const item = renderListItem(labal, user[labal]);
-    list.appendChild(item);
+    const List = renderListList(labal, user[labal]);
+    list.appendChild(List);
 
   });
   const users = document.querySelector('#users');
