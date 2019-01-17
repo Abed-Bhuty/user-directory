@@ -21,7 +21,7 @@ function renderListItem(labal, value) {
 
 function renderList(data) {
   const list = document.createElement("ul");
-  Object.keys(data).forEach(function(labal) {
+  Object.keys(data).forEach(labal => {
     const item = renderListItem(labal, data[labal]);
     list.appendChild(item);
   });
