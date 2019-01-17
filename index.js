@@ -8,37 +8,41 @@ function renderColor(color) {
   return colorDiv;
 }
 
-function renderListList(labal, value) {
-  const List = document.createElement("li");
-  List.textContent = `${labal}:`;
+function renderListItem(labal, value) {
+  const item = document.createElement("li");
+  item.textContent = `${labal}:`;
   try {
-    List.appendChild(value);
+    item.appendChild(value);
   } catch (e) {
-    List.textContent += value;
+    item.textContent += value;
   }
-  return List;
+  return item;
 }
 
-const handleSubmit = function (ev) {
+function renderList(data) {
+  const list = document.createElement("ul");
+  Object.keys(data).forEach(function(labal) {
+    const item = renderListItem(labal, data[labal]);
+    list.appendChild(item);
+  });
+  return list;
+}
+
+const handleSubmit = function(ev) {
   ev.preventDefault();
   const form = ev.target;
   const user = {
-    'Name': form.userName.value,
-    'Age': form.age.value,
-    'Favorite Color': renderColor(form.favoritecolor.value)
+    Name: form.userName.value,
+    Age: form.age.value,
+    "Favorite Color": renderColor(form.favoritecolor.value)
   };
-  const list = document.createElement("ul");
-
-  Object.keys(user).map(function (labal) {
-    const List = renderListList(labal, user[labal]);
-    list.appendChild(List);
-
-  });
-  const users = document.querySelector('#users');
+  const list = renderList(user);
+  const users = document.querySelector("#users");
 
   users.appendChild(list);
 
   form.reset();
   form.userName.focus();
 };
+
 form.addEventListener("submit", handleSubmit);
