@@ -10,17 +10,22 @@ function renderColor(color) {
 
 function renderListItem(labal, value) {
   const item = document.createElement("li");
-  item.textContent = `${labal}:`;
+  const term = document.createElement("dt");
+  term.textContent = labal;
+  const description = document.createElement("dd");
+
   try {
-    item.appendChild(value);
+    description.appendChild(value);
   } catch (e) {
-    item.textContent += value;
+    description.textContent += value;
   }
+  item.appendChild(term);
+  item.appendChild(description);
   return item;
 }
 
 function renderList(data) {
-  const list = document.createElement("ul");
+  const list = document.createElement("dl");
   Object.keys(data).forEach(labal => {
     const item = renderListItem(labal, data[labal]);
     list.appendChild(item);
